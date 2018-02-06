@@ -5,7 +5,7 @@ from django.http import Http404
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from Media import forms, find_food
+from Media import forms
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from django.utils import timezone
