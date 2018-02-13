@@ -1,11 +1,11 @@
-seefood/seefood/static
-seefood/seefood/media
-seefood/Media/saved_model
-seefood/Media/saved_models
+rocr/rocr/static
+rocr/rocr/media
+rocr/Media/saved_model
+rocr/Media/saved_models
 *.pyc
 *.sqlite
 *~
-seefood/node_modules
+rocr/node_modules
 node_modules
 .idea
 .vscode

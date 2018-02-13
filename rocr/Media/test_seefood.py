@@ -1,5 +1,5 @@
 """
-A script to test a trained SeeFood model using lots of images. 
+A script to test a trained Rocr model using lots of images.
 Script assumes that the data for testing is organized the same way
 as for training. 
 

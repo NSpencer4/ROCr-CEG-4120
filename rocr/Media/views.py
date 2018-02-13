@@ -14,10 +14,10 @@ from django.http import JsonResponse
 import logging
 import os
 
-# Example output: C:\Users\Chase\Documents\projects\group-4110\seefood\Media
+# Example output: C:\Users\Chase\Documents\projects\group-4110\rocr\Media
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-# Example output: C:\Users\Chase\Documents\projects\group-4110\seefood\Media\uploads
+# Example output: C:\Users\Chase\Documents\projects\group-4110\rocr\Media\uploads
 UPLOADS_DIR = os.path.join(BASE_DIR, 'uploads')
 
 def upload(request):

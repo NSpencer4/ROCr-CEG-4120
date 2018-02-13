@@ -78,7 +78,7 @@ Run the installation
 sudo npm install npm -g
 
 Gather install the node_modules
-Cd into /seefood/Media/static
+Cd into /rocr/Media/static
 npm install
 
 Setup the DB
@@ -89,7 +89,7 @@ After Environment Setup:
 
 To run the app locally:
 
-Cd into seefood (this directory has the Media directory)
+Cd into rocr (this directory has the Media directory)
 Python manage.py runserver
 To access the app in a browser:
 
