@@ -6,9 +6,6 @@
 {% block css %}
     {{block.super}}
 {% endblock %}
-{% block js %}
-    {{block.super}}
-{% endblock %}
 
 {% block cont %}
 <!--Results-->
@@ -28,4 +25,8 @@
     </div>
     {% endif %}
 </div>
+
+{% block js %}
+    {{block.super}}
+{% endblock %}
 {% endblock cont %}

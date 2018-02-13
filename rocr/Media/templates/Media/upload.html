@@ -6,9 +6,6 @@
 {% block css %}
     {{block.super}}
 {% endblock %}
-{% block js %}
-    {{block.super}}
-{% endblock %}
 
 <!--This is a fallback plan if the webcam doesnt work-->
 
@@ -53,4 +50,8 @@
   <p>&copy; 2017 Rocr, Inc.</p>
 </footer> 
 
-{% endblock cont %}  
+{% block js %}
+    {{block.super}}
+{% endblock %}
+{% endblock %}
+{% endblock cont %}
