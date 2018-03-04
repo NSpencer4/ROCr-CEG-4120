@@ -20,9 +20,6 @@ class Upload(models.Model):
     # This might be helpful?
     title = models.CharField(max_length=140, null=True)
     accurate = models.CharField(max_length=50, null=True)
-    # views = models.IntegerField(default=0)
-    # upvotes = models.PositiveIntegerField(default=0)
-    # downvotes = models.PositiveIntegerField(default=0)
 
     objects = UploadsManager()
 
