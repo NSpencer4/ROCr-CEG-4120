@@ -1,0 +1,86 @@
+{% extends "Media/layout.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <h1>ROC curve analysis</h1>
+    <p class="lead">
+    Suppose we have several (original) receiver operating characteristic (ROC) curves.
+        We want to combine all these ROC curves together using some "rule" to produce
+        a new (derived) ROC curve. There can be several different combining rules, thus,
+        there can be several derived ROC curves. 
+    </p>
+    <p>
+        The Goal of this software is to take in two or more ROC functions, input
+        input a combining rule, then output the derived ROC curve.
+    </p>
+    <p><a href="https://www.medcalc.org/manual/roc-curves.php" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Task 1: Write code to plot a ROC function.</h2>
+        
+        <p>
+            (a) Let f(x) = tanh(2x) for x 2 [0; 1]: Write the code to plot the
+            graph of this function.
+        </p>
+        <p>
+            (b) Let g(x) = 12/11 (arcsin(x))1=4 for x 2 [0; 1]. Write the code to plot the graph of this
+            function.
+        </p>
+        <p>
+            (c) Plot both these curves on the same unit square. That is, overlay these two curves using
+            different colors.
+        </p>
+        <p><a class="btn btn-default" href="{% url 'task1' %}">Calculate &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Task 2: Logic AND rule.</h2>
+        <p>
+            (a) Write code to produce the AND operation of two ROC functions. Let f and g be two
+            generic ROC functions. Define the AND of f with g to be, for every z 2 [0; 1]
+            [f ^ g] (z) = max x;y2[0;1] xy=z f(x)g(y)
+        </p>
+        <p>
+            (b) Use f(x) = tanh(2x) and g(y) = 12
+            11 (arcsin(y))1=4 to produce the resultant ANDed ROC
+            function. Plot all three functions.
+        </p>
+        <p><a class="btn btn-default" href="{% url 'task2' %}">Calculate &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Task 3. Logic OR rule.</h2>
+        <p>
+            (a) Write code to produce the OR operation of two ROC functions. Let f and g be two
+            generic ROC functions. Define the OR of f with g to be, for every z 2 [0; 1]
+            [f _ g] (z) = max
+            x;y2[0;1]
+            x+y??xy=z
+            [f(x) + g(y) ?? f(x)g(y)] The symbol _ denotes the OR operation.
+        </p>
+        <p>
+            (b) Use f(x) = tanh(2x) and g(y) = 1211 (arcsin(y))1=4 to produce the resultant ORed ROC
+            function. Plot all three functions.
+        </p>
+        <p><a class="btn btn-default" href="{% url 'task3' %}">Calculate &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Task 3. Logic OR rule.</h2>
+        <p>
+            (a) Write code to produce the OR operation of two ROC functions. Let f and g be two
+            generic ROC functions. Define the OR of f with g to be, for every z 2 [0; 1]
+            [f _ g] (z) = max
+            x;y2[0;1]
+            x+y??xy=z
+            [f(x) + g(y) ?? f(x)g(y)] The symbol _ denotes the OR operation.
+        </p>
+        <p>
+            (b) Use f(x) = tanh(2x) and g(y) = 1211 (arcsin(y))1=4 to produce the resultant ORed ROC
+            function. Plot all three functions.
+        </p>
+        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+{% endblock %}
