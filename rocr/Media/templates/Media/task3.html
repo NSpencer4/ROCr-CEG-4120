@@ -11,7 +11,7 @@
 
     
 
-    <script src="{% static 'node_modules\chart.js\dist\Chart.bundle.js' %}"></script>
+    <script src="{% static 'node_modules\chart.js\dist\Chart.js' %}"></script>
 
     <!-- <style>
         canvas {
@@ -175,4 +175,7 @@
 
 </script>
 </body>
+{% block js %}
+    {{block.super}}
 {% endblock %}
+{% endblock content %}
