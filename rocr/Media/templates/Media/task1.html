@@ -1,24 +1,43 @@
-{% extends "layout.html" %} {% load staticfiles %} {% block content %}
+{% extends "page.html" %}
+{% load staticfiles %}
+
+{% block title %}Rocr{% endblock %}
 
 
-<canvas id="myChart"></canvas>
+{% block css %}
+    {{block.super}}
+{% endblock %}
 
 
+{% block cont %}
 
-<head>
-    <title>Line Chart</title>
 
-    <script src="{% static 'node_modules/chart.js/dist/Chart.js' %}"></script>
-
-    <style>
-        /**
-          canvas{
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-	}
-      **/
-    </style>
-</head>
-
-<script src="{% static 'js/task1.js' %}"></script> {% endblock %}
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+  
+        
+  
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Example Chart</h2>
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+        </div> <!-- /container -->
+  
+      </div>
+    </div>
+  </div>
+          
+  <hr>
+  <footer>
+    <p>&copy; 2017 Rocr, Inc.</p>
+  </footer>
+  {% block js %}
+      {{block.super}}
+  {% endblock %}
+  <script src="{% static 'js/task1.js' %}"></script>
+  {% endblock cont %}
+  
