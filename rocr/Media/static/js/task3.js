@@ -136,7 +136,7 @@ options: {
             display: true,
             scaleLabel: {
                 display: true,
-                labelString: 'Value'
+                labelString: 'True Positive'
             }
         }]
     }

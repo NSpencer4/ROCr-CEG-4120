@@ -85,7 +85,37 @@ var chart = new Chart(ctx, {
     },
 
     // Configuration options go here
-    options: {}
+    options: {
+        responsive: true,
+        title: {
+            display: true,
+            text: 'ROC curves'
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: true,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+            xAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'False Positive'
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'True positive'
+                }
+            }]
+        }
+    }
 
 });
 
