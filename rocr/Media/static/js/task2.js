@@ -1,5 +1,5 @@
 var prec = 4;
-var listSize = 100;
+var listSize = 10000;
 var xList = [];
 var fXList = [];
 var gXList = [];
@@ -86,6 +86,8 @@ var chart = new Chart(ctx, {
 
     // Configuration options go here
     options: {
+
+
         responsive: true,
         title: {
             display: true,
@@ -101,20 +103,32 @@ var chart = new Chart(ctx, {
         },
         scales: {
             xAxes: [{
+
+
                 display: true,
+
                 scaleLabel: {
                     display: true,
                     labelString: 'False Positive'
+                },
+                ticks: {
+                    maxTicksLimit: 10,
+                    stepSize: .1
                 }
             }],
             yAxes: [{
                 display: true,
                 scaleLabel: {
                     display: true,
-                    labelString: 'True positive'
+                    labelString: 'True Positive'
+                },
+                ticks: {
+                    maxTicksLimit: 10,
+                    stepSize: .1
                 }
             }]
         }
+
     }
 
 });

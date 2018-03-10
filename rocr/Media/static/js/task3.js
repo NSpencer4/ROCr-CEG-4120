@@ -1,5 +1,5 @@
 var prec = 3;
-var listSize = 100;
+var listSize = 10000;
 var xList = [];
 var fXList = [];
 var gXList = [];
@@ -69,79 +69,90 @@ var ctx = document.getElementById('myChart').getContext('2d');
 
 
 var chart = new Chart(ctx, {
-// The type of chart we want to create
-type: 'line',
-// The data for our dataset
-data: {
-    labels: xList,
-    datasets: [
-        {
-            label: "f(x) curve",
-            fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: fXList,
+    // The type of chart we want to create
+    type: 'line',
+    // The data for our dataset
+    data: {
+        labels: xList,
+        datasets: [
+            {
+                label: "f(x) curve",
+                fill: false,
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: fXList,
+            },
+            {
+                label: "g(x) curve",
+                fill: false,
+                backgroundColor: 'rgb(66, 134, 244)',
+                borderColor: 'rgb(66, 134, 244)',
+                data: gXList,
+            },
+            {
+                label: "f(x) AND g(x) ",
+                fill: false,
+                backgroundColor: 'rgb(165, 9, 9)',
+                borderColor: 'rgb(165, 9, 9)',
+                data: andList,
+            },
+            {
+                label: "f(x) OR g(x) ",
+                fill: false,
+                backgroundColor: 'rgb(42, 84, 24)',
+                borderColor: 'rgb(42, 84, 24)',
+                data: orList,
+            }
+
+        ]
+    },
+
+    // Configuration options go here
+    options: {
+
+
+        responsive: true,
+        title: {
+            display: true,
+            text: 'ROC curves'
         },
-        {
-            label: "g(x) curve",
-            fill: false,
-            backgroundColor: 'rgb(66, 134, 244)',
-            borderColor: 'rgb(66, 134, 244)',
-            data: gXList,
+        tooltips: {
+            mode: 'index',
+            intersect: true,
         },
-        {
-            label: "f(x) AND g(x) ",
-            fill: false,
-            backgroundColor: 'rgb(165, 9, 9)',
-            borderColor: 'rgb(165, 9, 9)',
-            data: andList,
+        hover: {
+            mode: 'nearest',
+            intersect: true
         },
-        {
-            label: "f(x) OR g(x) ",
-            fill: false,
-            backgroundColor: 'rgb(42, 84, 24)',
-            borderColor: 'rgb(42, 84, 24)',
-            data: orList,
+        scales: {
+            xAxes: [{
+
+
+                display: true,
+
+                scaleLabel: {
+                    display: true,
+                    labelString: 'False Positive'
+                },
+                ticks: {
+                    maxTicksLimit: 10,
+                    stepSize: .1
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'True Positive'
+                },
+                ticks: {
+                    maxTicksLimit: 10,
+                    stepSize: .1
+                }
+            }]
         }
 
-    ]
-},
-
-// Configuration options go here
-options: {
-
-
-    responsive: true,
-    title: {
-        display: true,
-        text: 'ROC curves'
-    },
-    tooltips: {
-        mode: 'index',
-        intersect: true,
-    },
-    hover: {
-        mode: 'nearest',
-        intersect: true
-    },
-    scales: {
-        xAxes: [{
-            display: true,
-            scaleLabel: {
-                display: true,
-                labelString: 'False Positive'
-            }
-        }],
-        yAxes: [{
-            display: true,
-            scaleLabel: {
-                display: true,
-                labelString: 'True Positive'
-            }
-        }]
     }
-
-}
 
 });
 

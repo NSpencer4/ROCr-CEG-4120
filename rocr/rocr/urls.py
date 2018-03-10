@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^task1$', Media.views.task1, name='task1'),
     url(r'^task2$', Media.views.task2, name='task2'),
     url(r'^task3$', Media.views.task3, name='task3'),
+    url(r'^task4$', Media.views.task4, name='task4'),
 ]
 
 if settings.DEBUG:

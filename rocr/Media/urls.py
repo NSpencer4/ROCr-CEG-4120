@@ -6,9 +6,7 @@ urlpatterns = [
     url(r'^login', views.loginUser, name="loginUser"),
     url(r'^logout', views.logout_view, name="logout"),
     url(r'^registration', views.createUser, name="createUser"),
-    url(r'^task1$', views.task1, name='task1'),
-    url(r'^task2$', views.task2, name='task2'),
-    url(r'^task3$', views.task3, name='task3'),
+    
 
 
 
