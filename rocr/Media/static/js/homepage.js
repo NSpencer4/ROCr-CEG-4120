@@ -26,7 +26,7 @@ var data = {
             fill: false,
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: xList,
+            data: [],
         },
 
 
@@ -58,8 +58,8 @@ function addDataSet() {
 
 
     var fXList = [];
-    for(var i = 0; i < datapoints; i++ ){
-        fXList.push(simplified.eval({x: parseFloat(xList[i])}));
+    for (var i = 0; i < datapoints; i++) {
+        fXList.push(simplified.eval({ x: parseFloat(xList[i]) }));
     }
 
 
@@ -73,15 +73,15 @@ function addDataSet() {
     }
     var newXList = {
         label: "x",
-            fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: xList,
+        fill: false,
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: xList,
 
     }
-    
-    
-    
+
+
+    myLineChart.data.labels = xList;
     myLineChart.data.datasets.push(newDataSet);
     myLineChart.update();
 }
@@ -126,6 +126,7 @@ var options = {
                 labelString: 'True Positive'
             },
             ticks: {
+                beginAtZero: true,
                 maxTicksLimit: 10,
                 stepSize: .1
             }
@@ -136,6 +137,7 @@ var options = {
 
 
 var myLineChart = Chart.Line(canvas, {
+   
     data: data,
     options: options
 });
