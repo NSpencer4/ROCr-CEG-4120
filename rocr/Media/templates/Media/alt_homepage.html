@@ -14,19 +14,22 @@
                         <div class="col-md-12">
                             <h1>ROCr</h1>
                             <div style="position: fixed;
-                            top: 300px;
+                            top: 100px;
                             left: 30px;
                             display: inline-block;">
+                                <p>Previous Equation:</p>
                                 <p id="test"></p>
-                                <p>Enter function name. Ex: f(x), g(x), etc...</p>
-                                <p><input type="text" id="funcName" value="f(x)"></p>
+                                
+                                
                                 <p>Enter a function</p>
-                                <p><input type="text" id="funcDef" value="tanh(2x)"></p>
-                                <p>Enter integer # of data points</p>                                
+                                <p><input type="text" id="funcDef" value=""></p>
+                                <p>Enter integer # of data points</p> 
+                                <p>Changing this number between</p> 
+                                <p>adding functions does not work yet</p> 
+                                <p>Give it a try</p>                             
                                 <p><input type="number" id="noPoints" value=50></p>
-                                <button onclick="addDataSet()" id="addDataset">Submit</button>
-                                <p><input type="text" id="remFunc" value=""></p>
-                                <button id="removeDataset">Remove Function</button>
+                                <button onclick="addDataSet()" id="addDataset">Submit</button>                        
+                                <button onclick="removeDataSet()" id="removeDataset">Remove Function</button>
                             </div>
                                 
                             
@@ -35,6 +38,17 @@
                                     <canvas id="myChart" width="600" height="600"></canvas>
                                 </div>
                                 
+                            </div>
+                            <div style="position: fixed;
+                            top: 100px;
+                            right: 30px;
+                            display: inline-block;">
+                            <p>Equations to try(just copy and paste them</p>
+                            <p> into the "Enter a function field): </p>
+                            <p><input type="text" id="not for use" value="(12/11)(asin(x))^(1/4)"></p>
+                            <p><input type="text" id="not for use" value="tanh(2x)"></p>
+                            <p><input type="text" id="not for use" value="x^(1/2)"></p>
+                            
                             </div>
                         </div>
 

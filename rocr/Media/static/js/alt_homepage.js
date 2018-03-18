@@ -19,7 +19,7 @@ xList.sort()
 var canvas = document.getElementById('myChart');
 // The data for our dataset
 var data = {
-    labels: [],
+    labels: xList,
     datasets: [
         {
             label: "",
@@ -39,13 +39,22 @@ var dynamicColors = function () {
     var b = Math.floor(Math.random() * 255);
     return "rgb(" + r + "," + g + "," + b + ")";
 }
+function removeDataSet(){
+    if(myLineChart.data.datasets.length > 1){
+        myLineChart.data.datasets.splice(0,1);
+    }
+        
+    myLineChart.update();
+}
 
 function addDataSet() {
-    var funcName = document.getElementById("funcName").value;
+    var funcName = document.getElementById("funcDef").value;
     var datapoints = document.getElementById("noPoints").value;
     var func = document.getElementById("funcDef").value;
     var f = math.parse(func);
     var simplified = math.simplify(f);
+    
+    document.getElementById("test").innerHTML = func.toString();
     var xList = [];
     //Make x values
     var x = 0;
@@ -54,6 +63,8 @@ function addDataSet() {
         xList.push(x.toFixed(prec));
     }
     xList.sort()
+
+    
 
 
     if (datapoints < myLineChart.data.datasets[0].data.length){
@@ -66,10 +77,16 @@ function addDataSet() {
 
     
 
-
+    ///Get the function values
     var fXList = [];
     for (var i = 0; i < datapoints; i++) {
-        fXList.push(simplified.eval({ x: parseFloat(xList[i]) }));
+        if(simplified.eval({ x: parseFloat(xList[i]) }) <= 1){
+            fXList.push(simplified.eval({ x: parseFloat(xList[i]) }));
+        }
+
+        
+        
+        
     }
 
 
@@ -79,7 +96,6 @@ function addDataSet() {
         backgroundColor: dynamicColors(),
         borderColor: dynamicColors(),
         data: fXList
-
     }
     var newXList = {
         label: "x",
@@ -87,7 +103,6 @@ function addDataSet() {
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgb(255, 99, 132)',
         data: xList,
-
     }
 
     
@@ -119,8 +134,6 @@ var options = {
     },
     scales: {
         xAxes: [{
-
-
             display: true,
 
             scaleLabel: {
