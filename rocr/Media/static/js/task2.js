@@ -1,5 +1,5 @@
 var prec = 4;
-var listSize = 10000;
+var listSize = 500;
 var xList = [];
 var fXList = [];
 var gXList = [];

@@ -1,0 +1,59 @@
+{% extends "page.html" %} {% load staticfiles %} {% block title %}Alternate Homepage{% endblock %} {% block css %} {{block.super}}
+{% endblock %} {% block cont %}
+
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Task 1</h1>
+                            <div style="position: fixed;
+                            top: 300px;
+                            left: 30px;
+                            display: inline-block;">
+                                <p>Enter function name. Ex: f(x), g(x), etc...</p>
+                                <p><input type="text" id="funcName" value=""></p>
+                                <p>Enter a function</p>
+                                <p><input type="text" id="funcDef" value=""></p>
+                                <p>Enter integer # of data points</p>
+                                <p><input type="number" id="noPoints" value=""></p>
+                                <button onclick="addDataSet()" id="addDataset">Submit</button>
+                                <p><input type="text" id="remFunc" value=""></p>
+                                <button id="removeDataset">Remove Function</button>
+                            </div>
+                                
+                            
+                            <div style="display: inline-block">
+                                <div class="jumbotron">
+                                    <canvas id="myChart" width="600" height="600"></canvas>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- /container -->
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+
+</body>
+
+<hr>
+<footer>
+    <p>&copy; 2017 Rocr, Inc.</p>
+</footer>
+{% block js %} {{block.super}} {% endblock %}
+<script src="{% static 'js/homepage.js' %}"></script> {% endblock cont %}

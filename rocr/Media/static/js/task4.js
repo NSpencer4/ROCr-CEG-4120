@@ -2,7 +2,7 @@
 
 
 var prec = 3;
-var listSize = 10000;
+var listSize = 50;
 var xList = [];
 var yList = [];
 var fXList = [];

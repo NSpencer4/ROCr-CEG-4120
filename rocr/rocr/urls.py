@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^task2$', Media.views.task2, name='task2'),
     url(r'^task3$', Media.views.task3, name='task3'),
     url(r'^task4$', Media.views.task4, name='task4'),
+    url(r'^altHomePage$', Media.views.altHomePage, name='altHomePage'),
 ]
 
 if settings.DEBUG:

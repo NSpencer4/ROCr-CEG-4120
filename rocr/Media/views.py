@@ -44,6 +44,17 @@ def index(request):
     }
     return render(request, 'Media/homepage.html', context)
 
+
+def altHomePage(request):
+    
+    context = {
+        'recent': Upload.objects.all(),
+        'loginForm': AuthenticationForm()
+    }
+    return render(request, 'Media/alt_homepage.html', context)
+
+
+
 def createUser(request):
     form = forms.RegistrationForm()
 
