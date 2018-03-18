@@ -1,10 +1,7 @@
 var prec = 4;
 var listSize = 5000;
 var xList = [];
-var fXList = [];
-var gXList = [];
-var andList = [];
-var orList = [];
+
 
 //Make x values
 var x = 0;
@@ -14,52 +11,7 @@ for (i = 0; i < listSize; i++) {
 }
 xList.sort()
 
-//Make fX
-var fX = 0;
-for (var i = 0; i < listSize; i++) {
 
-    fX = Math.tanh(2 * parseFloat(xList[i]));
-    if (fX <= 1) {
-        fXList.push(fX.toFixed(prec));
-    }
-
-}
-
-//Make gX
-var gX = 0;
-for (var i = 0; i < listSize; i++) {
-
-    gX = (12 / 11) * (Math.pow(Math.asin(parseFloat(xList[i])), (1 / 4)));
-    if (gX <= 1) {
-        gXList.push(gX.toFixed(prec));
-    }
-
-}
-//Make fX AND gX
-var andVal = 0;
-for (var i = 0; i < listSize; i++) {
-
-    andVal = parseFloat(fXList[i]) * parseFloat(gXList[i]);
-    if (andVal <= 1) {
-        andList.push(andVal.toFixed(prec));
-    }
-
-}
-
-
-//Make fX OR gX
-
-var orVal = 0;
-
-for (var i = 0; i < listSize; i++) {
-    orVal = parseFloat(fXList[i])
-        + parseFloat(gXList[i]) -
-        parseFloat(fXList[i]) * parseFloat(gXList[i]);
-    if (orVal <= 1) {
-        orList.push(orVal.toFixed(prec));
-    }
-
-}
 
 
 
