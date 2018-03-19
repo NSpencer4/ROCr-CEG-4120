@@ -47,20 +47,6 @@ for (var i = 0; i < listSize; i++) {
 }
 
 
-//Make fX OR gX
-
-var orVal = 0;
-
-for (var i = 0; i < listSize; i++) {
-    orVal = parseFloat(fXList[i])
-        + parseFloat(gXList[i]) -
-        parseFloat(fXList[i]) * parseFloat(gXList[i]);
-    if (orVal <= 1) {
-        orList.push(orVal.toFixed(prec));
-    }
-
-}
-
 
 
 ////////GRAPH     //////////////
@@ -86,6 +72,13 @@ var chart = new Chart(ctx, {
                 backgroundColor: 'rgb(66, 134, 244)',
                 borderColor: 'rgb(66, 134, 244)',
                 data: gXList,
+            },
+            {
+                label: "f(x) AND g(x) ",
+                fill: false,
+                backgroundColor: 'rgb(165, 9, 9)',
+                borderColor: 'rgb(165, 9, 9)',
+                data: andList,
             }
 
         ]
@@ -95,5 +88,4 @@ var chart = new Chart(ctx, {
     options: {}
 
 });
-
 
