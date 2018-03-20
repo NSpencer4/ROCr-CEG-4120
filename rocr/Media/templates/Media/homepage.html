@@ -13,9 +13,11 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-sm-12">
+        
 
       <div class="jumbotron">
         <h1>ROC curve analysis</h1>
+        
         <p class="lead">
         Suppose we have several (original) receiver operating characteristic (ROC) curves.
             We want to combine all these ROC curves together using some "rule" to produce
@@ -26,7 +28,7 @@
             The Goal of this software is to take in two or more ROC functions, input
             input a combining rule, then output the derived ROC curve.
         </p>
-        <p><a href="https://www.medcalc.org/manual/roc-curves.php" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
+        <p><a href="{% url 'altHomePage' %}" class="btn btn-primary btn-large">Alternate Homepage &raquo;</a></p>
         <div class="row">
           <div class="col-sm-12">
               <h2>Task 1: Write code to plot a ROC function.</h2>
@@ -86,7 +88,7 @@
                   (f ^ g) _ h:
                   Overlay this graph with the graph of (f _ g) ^ h.
               </p>
-              <p><a class="btn btn-default" href="http://azure.microsoft.com">Not Defined yet &raquo;</a></p>
+              <p><a class="btn btn-default" href="{% url 'task4' %}">Calculate &raquo;</a></p>
           </div>
       </div>
         
