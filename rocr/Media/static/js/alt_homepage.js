@@ -114,6 +114,7 @@ function addDataSet() {
     myLineChart.data.datasets.push(newDataSet);
     myLineChart.update();
     removeCounter++;
+    
 }
 
 function removeExtraData(dp, s, xL) {

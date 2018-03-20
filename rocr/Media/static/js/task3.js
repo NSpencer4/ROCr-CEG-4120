@@ -9,7 +9,7 @@ var orList = [];
 //Make x values
 var x = 0;
 for (i = 0; i < listSize; i++) {
-    x = Math.random();
+    x = i/listSize;
     xList.push(x.toFixed(prec));
 }
 xList.sort()
