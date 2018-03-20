@@ -28,6 +28,14 @@ def task2(request):
 def task3(request):
     return render(request, 'Media/task3.html', 
                  {'title' : 'Task Three'})
+
+
+def task4(request):
+    return render(request, 'Media/task4.html', 
+                 {'title' : 'Task Four'})
+
+
+
 def index(request):
 
     context = {
@@ -35,6 +43,17 @@ def index(request):
         'loginForm': AuthenticationForm()
     }
     return render(request, 'Media/homepage.html', context)
+
+
+def altHomePage(request):
+    
+    context = {
+        'recent': Upload.objects.all(),
+        'loginForm': AuthenticationForm()
+    }
+    return render(request, 'Media/alt_homepage.html', context)
+
+
 
 def createUser(request):
     form = forms.RegistrationForm()

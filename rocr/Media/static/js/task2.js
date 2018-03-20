@@ -1,5 +1,5 @@
 var prec = 4;
-var listSize = 100;
+var listSize = 500;
 var xList = [];
 var fXList = [];
 var gXList = [];
@@ -85,7 +85,51 @@ var chart = new Chart(ctx, {
     },
 
     // Configuration options go here
-    options: {}
+    options: {
+
+
+        responsive: true,
+        title: {
+            display: true,
+            text: 'ROC curves'
+        },
+        tooltips: {
+            mode: 'index',
+            intersect: true,
+        },
+        hover: {
+            mode: 'nearest',
+            intersect: true
+        },
+        scales: {
+            xAxes: [{
+
+
+                display: true,
+
+                scaleLabel: {
+                    display: true,
+                    labelString: 'False Positive'
+                },
+                ticks: {
+                    maxTicksLimit: 10,
+                    stepSize: .1
+                }
+            }],
+            yAxes: [{
+                display: true,
+                scaleLabel: {
+                    display: true,
+                    labelString: 'True Positive'
+                },
+                ticks: {
+                    maxTicksLimit: 10,
+                    stepSize: .1
+                }
+            }]
+        }
+
+    }
 
 });
 
