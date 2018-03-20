@@ -1,6 +1,7 @@
 var prec = 4;
 var listSize = 5000;
 var xList = [];
+var removeCounter = 0;
 
 //Make x values
 var x = 0;
@@ -39,6 +40,7 @@ var dynamicColors = function () {
     return "rgb(" + r + "," + g + "," + b + ")";
 }
 function addRemoveButtons() {
+
     document.getElementById("whichOne").innerHTML = "Which function would you like to remove?";
     for (var i = 1; i < myLineChart.data.datasets.length; i++) {
         var div = document.createElement("div");
@@ -50,6 +52,7 @@ function addRemoveButtons() {
         btn.appendChild(t);
         div.appendChild(btn);
         btn.onclick = removeDataSet;
+        
 
     }
 
@@ -64,11 +67,8 @@ function addRemoveButtons() {
         myLineChart.update();
     }
 
-
-
-
-
 }
+
 
 
 function addDataSet() {
@@ -83,7 +83,8 @@ function addDataSet() {
     //Make x values
     var x = 0;
     for (var i = 0; i < datapoints; i++) {
-        x = Math.random();
+        x = i / datapoints;
+        //x = Math.random();
         xList.push(x.toFixed(prec));
     }
     xList.sort()
@@ -112,6 +113,7 @@ function addDataSet() {
     myLineChart.data.labels = xList;
     myLineChart.data.datasets.push(newDataSet);
     myLineChart.update();
+    removeCounter++;
 }
 
 function removeExtraData(dp, s, xL) {
