@@ -1,14 +1,13 @@
 {
   "name": "rocr",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "bootstrap": "^3.3.6",
     "chart.js": "^2.7.2",
     "font-awesome": "^4.7.0",
     "math.js": "^1.1.43",
-    "mathjs": "^4.0.1",
-    "moment": "^2.13.0"
+    "mathjs": "^4.0.1"
   },
   "devDependencies": {
     "del": "^2.2.0",
