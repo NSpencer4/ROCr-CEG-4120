@@ -13,9 +13,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h1>ROCr</h1>
-                            <div style="position: fixed;
-                            top: 30px;
-                            left:10px;
+                            <div style="position: relative;
+                            bottom: 300px;
+                            right:10px;
                             display: inline-block;">
                                 <p>Previous Equation:</p>
                                 <p id="test"></p>                              
@@ -26,8 +26,8 @@
                                 <p>adding functions does not work yet</p> 
                                 <p>Give it a try</p>                             
                                 <p><input type="number" id="noPoints" value=50></p>
-                                <button onclick="addDataSet()" id="addDataset">Plot Function</button>                        
-                                <p><button onclick="addRemoveButtons()" id="removeDataset">Remove Function</button></p>
+                                <button onclick="addDataSet(); addRemoveButtons();" id="addDataset">Plot Function</button>                        
+                                <p><button id="removeDataset">Remove Function</button></p>
                                 <p id="whichOne"></p>
                                 <p id="toRemove"></p>
                             </div>

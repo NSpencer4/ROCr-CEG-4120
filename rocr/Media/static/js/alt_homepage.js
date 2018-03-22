@@ -39,22 +39,31 @@ var dynamicColors = function () {
     var b = Math.floor(Math.random() * 255);
     return "rgb(" + r + "," + g + "," + b + ")";
 }
+
+
 function addRemoveButtons() {
 
-    document.getElementById("whichOne").innerHTML = "Which function would you like to remove?";
-    for (var i = 1; i < myLineChart.data.datasets.length; i++) {
-        var div = document.createElement("div");
-        div.id = "div" + i;
-        document.getElementById("toRemove").appendChild(div);
-        var btn = document.createElement("BUTTON");
-        btn.val = myLineChart.data.datasets[i];
-        var t = document.createTextNode(myLineChart.data.datasets[i].label);
-        btn.appendChild(t);
-        div.appendChild(btn);
-        btn.onclick = removeDataSet;
-        
+    document.getElementById("whichOne").innerHTML =
+        "Which function would you like to remove?";
 
-    }
+    var datasetSize = myLineChart.data.datasets.length - 1;
+
+
+    var div = document.createElement("div");
+    div.id = "div" + datasetSize;
+    document.getElementById("toRemove").appendChild(div);
+    var btn = document.createElement("INPUT");
+    btn.setAttribute("type", "checkbox");
+    btn.val = myLineChart.data.datasets[datasetSize];
+    var t = document.createTextNode(
+        myLineChart.data.datasets[datasetSize].label);
+    div.appendChild(btn);
+    div.appendChild(t);
+
+
+
+
+
 
     function checkDataSet(dataset) {
         return dataset == this.val;
@@ -72,6 +81,7 @@ function addRemoveButtons() {
 
 
 function addDataSet() {
+
     var funcName = document.getElementById("funcDef").value;
     var datapoints = document.getElementById("noPoints").value;
     var func = document.getElementById("funcDef").value;
@@ -113,8 +123,8 @@ function addDataSet() {
     myLineChart.data.labels = xList;
     myLineChart.data.datasets.push(newDataSet);
     myLineChart.update();
-    removeCounter++;
-    
+
+
 }
 
 function removeExtraData(dp, s, xL) {
@@ -185,4 +195,17 @@ var myLineChart = Chart.Line(canvas, {
     data: data,
     options: options
 });
+function addButton() {
 
+    var div = document.createElement("div");
+    div.id = "div" + i;
+    document.getElementById("toRemove").appendChild(div);
+    var btn = document.createElement("BUTTON");
+    btn.val = myLineChart.data.datasets[i];
+    var t = document.createTextNode(myLineChart.data.datasets[i].label);
+    btn.appendChild(t);
+    div.appendChild(btn);
+    btn.onclick = removeDataSet;
+
+}
+document.getElementById("addDataset").addEventListener("click", addButton);
