@@ -1,7 +1,7 @@
 var prec = 4;
 var listSize = 5000;
 var xList = [];
-var removeCounter = 0;
+var dataSetsSize = 0;
 
 //Make x values
 var x = 0;
@@ -52,32 +52,117 @@ function addRemoveButtons() {
         btn.appendChild(t);
         div.appendChild(btn);
         btn.onclick = removeDataSet;
-        
+
 
     }
 
     function checkDataSet(dataset) {
         return dataset == this.val;
     }
-    function removeDataSet() {
-        var datasetindex = myLineChart.data.datasets.findIndex(checkDataSet, this);
+    function removeDataSet(fc) {
+        var datasetindex = myLineChart.data.datasets.findIndex(checkDataSet, fc);
 
         myLineChart.data.datasets.splice(datasetindex, 1);
-        this.parentNode.parentNode.removeChild(this.parentNode);
+        dataSetsSize--;
+
         myLineChart.update();
     }
 
 }
 
 
+function processChecked() {
+    //all of the equations entered
+    var eqList = [];
+    //only the equations
+    var checkedList = [];
 
-function addDataSet() {
+    eqList.forEach(function (eq) {
+        if (eq.isChecked()) {
+            checkedList.push(eq)
+        }
+    });
+    //Given a specific interval
+    //Do all possible AND/Or combos on checked equations and plot
+    // the equation of the best curve
+
+    process(checkedList);
+
+}
+function process(cL) {
+
+
+    var bestCurve = "";
+
+    return bestCurve;
+}
+
+function removeChecked() {
+
+    //Take in all the elements of the ul list, id "funcList"
+    var eqList = [];
+
+
+    // Remove from the graph and anywhere else, any of the checked equations
+
+}
+
+
+function enterDataSet() {
+    //Getting the equation string, parsing and making a set
+    //Also creating a checkbox entry with the equation
+    var dataSet = [];
     var funcName = document.getElementById("funcDef").value;
     var datapoints = document.getElementById("noPoints").value;
     var func = document.getElementById("funcDef").value;
+    var backgroundColor = dynamicColors();
+    var borderColor = dynamicColors();
+
+    dataSet = addDataSet(datapoints, func, backgroundColor, borderColor);
+
+
+
+
+    //Also creating a checkbox entry with the equation
+    var lEntry = document.createElement("li");
+    var funcCheck = document.createElement("INPUT");
+    funcCheck.setAttribute("type", "checkbox");
+    funcCheck.checked = true;
+    funcCheck.id = func;
+
+    funcCheck.val = dataSet;
+    funcCheck.onchange = function () {
+        if (funcCheck.checked == false) {
+            let removalIndex = myLineChart.data.datasets.indexOf(funcCheck.val); //Locate index of ds1
+            if (removalIndex >= 0) { //make sure this element exists in the array
+                myLineChart.data.datasets.splice(removalIndex, 1);
+            }
+            myLineChart.update();
+
+
+
+
+        }
+        else {
+            funcCheck.val = addDataSet(datapoints, funcCheck.id, backgroundColor, borderColor);
+
+
+
+        }
+    }
+    lEntry.innerHTML = funcName;
+    lEntry.appendChild(funcCheck);
+    document.getElementById("funcList").appendChild(lEntry);
+
+
+
+
+}
+function addDataSet(datapoints, func, bckC, bordC) {
+
     var f = math.parse(func);
     var simplified = math.simplify(f);
-    document.getElementById("test").innerHTML = func.toString();
+
     var xList = [];
 
     //Make x values
@@ -88,36 +173,49 @@ function addDataSet() {
         xList.push(x.toFixed(prec));
     }
     xList.sort()
-
+    // This Function is currently unused. Trying to be able to resize and replot the data
+    //when a new size is chosen
     if (datapoints < myLineChart.data.datasets[0].data.length) {
         removeExtraData(datapoints, simplified, xList);
     }
 
-    ///Get the function values
+    ///Get the function values using the parsed equation
+
     var fX = 0;
     var fXList = [];
     for (var i = 0; i < datapoints; i++) {
+        //This keeps the dataset under '1'(aka in the unit square)
         if (simplified.eval({ x: parseFloat(xList[i]) }) <= 1) {
             fX = simplified.eval({ x: parseFloat(xList[i]) });
             fXList.push(fX.toFixed(prec));
         }
     }
 
+    //Prepare our new dataset.
     var newDataSet = {
-        label: funcName,
+        label: func,
         fill: false,
-        backgroundColor: dynamicColors(),
-        borderColor: dynamicColors(),
+        backgroundColor: bckC,
+        borderColor: bordC,
         data: fXList
     }
     myLineChart.data.labels = xList;
+    //Push it onto our canvas/chart object
     myLineChart.data.datasets.push(newDataSet);
-    myLineChart.update();
-    removeCounter++;
-}
 
+    //refresh our chart to show new dataset
+    myLineChart.update();
+
+
+    dataSetsSize++;
+    return newDataSet;
+
+
+}
+//This function is not used yet but is where i want to be able to replot
+// a resized dataset onto the chart
 function removeExtraData(dp, s, xL) {
-    //can likely be removed
+
     var toBeRemoved = myLineChart.data.datasets[0].data.length - dp;
 
     myLineChart.data.datasets.forEach(function (dataset) {

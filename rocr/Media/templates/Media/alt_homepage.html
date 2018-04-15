@@ -14,11 +14,10 @@
                         <div class="col-md-12">
                             <h1>ROCr</h1>
                             <div style="position: fixed;
-                            top: 30px;
+                            top: 50px;
                             left:10px;
                             display: inline-block;">
-                                <p>Previous Equation:</p>
-                                <p id="test"></p>                              
+                                                              
                                 <p>Enter a function</p>
                                 <p><input type="text" id="funcDef" value=""></p>
                                 <p>Enter integer # of data points</p> 
@@ -26,8 +25,12 @@
                                 <p>adding functions does not work yet</p> 
                                 <p>Give it a try</p>                             
                                 <p><input type="number" id="noPoints" value=50></p>
-                                <button onclick="addDataSet()" id="addDataset">Plot Function</button>                        
-                                <p><button onclick="addRemoveButtons()" id="removeDataset">Remove Function</button></p>
+                                <button onclick="enterDataSet()" id="enterDataSet">Plot Function</button>       
+                                <p><button onclick="processChecked()" id="removeDataset">Process Checked(not defined)</button></p>                 
+                                <p><button onclick="removeCheced()" id="removeDataset">Remove Checked(not defined)</button></p>
+                                <p>Equation(s):</p>
+                                <p>Checking/unchecking/ removes/re-adds function</p>
+                                <ul id = "funcList"></ul>
                                 <p id="whichOne"></p>
                                 <p id="toRemove"></p>
                             </div>
