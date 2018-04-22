@@ -99,16 +99,47 @@ function process(cL) {
 
 function removeChecked() {
 
+    // list of checked elements
+    
     //Take in all the elements of the ul list, id "funcList"
-    var eqList = [];
-
+    var eqList = document.getElementById("funcList").getElementsByTagName("LI");
+    var chkd = [];
+    
+    
+    for (var i = 0; i < eqList.length; i++) {
+        var eqChild = eqList[i].children[0];
+        if (eqChild.checked == true) {
+            chkd.push(eqChild.val);
+        }
+    }
 
     // Remove from the graph and anywhere else, any of the checked equations
 
-}
+    for (var i = 0; i < chkd.length; i++) {
+        let removalIndex = myLineChart.data.datasets.indexOf(chkd[i]); //Locate index of ds1
+        if (removalIndex >= 0) { //make sure this element exists in the array
+            myLineChart.data.datasets.splice(removalIndex, 1);
 
+        }
+        
+        
+
+    }
+    myLineChart.update();
+    
+}
+///So you can hit 'ENTER' to enter equation
+var input = document.getElementById("funcDef");
+input.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("enterDataSet").click();
+    }
+});
+///////////////////////////////////////////////////////////////
 
 function enterDataSet() {
+    
     //Getting the equation string, parsing and making a set
     //Also creating a checkbox entry with the equation
     var dataSet = [];
@@ -124,12 +155,11 @@ function enterDataSet() {
 
 
     //Also creating a checkbox entry with the equation
-    var lEntry = document.createElement("li");
+    var lEntry = document.createElement("LI");
     var funcCheck = document.createElement("INPUT");
     funcCheck.setAttribute("type", "checkbox");
     funcCheck.checked = true;
     funcCheck.id = func;
-
     funcCheck.val = dataSet;
     funcCheck.onchange = function () {
         if (funcCheck.checked == false) {
