@@ -80,6 +80,7 @@ sudo npm install npm -g
 Gather install the node_modules
 Cd into /rocr/Media/static
 npm install
+
 npm install chart.js --save
 
 npm install mathjs --save    (notice no '.' between the 'math' and 'js')
