@@ -102,16 +102,33 @@ function removeChecked() {
     // list of checked elements
     
     //Take in all the elements of the ul list, id "funcList"
+    var UList  = document.getElementById("funcList");
     var eqList = document.getElementById("funcList").getElementsByTagName("LI");
     var chkd = [];
+    
     
     
     for (var i = 0; i < eqList.length; i++) {
         var eqChild = eqList[i].children[0];
         if (eqChild.checked == true) {
             chkd.push(eqChild.val);
+            funcList.removeChild(eqChild.parentElement);
+            i--;
+            
+            
         }
     }
+/// Remove Entry from the list
+
+    //for (var i = 0; i < chkd.length; i++) {
+       // let removalIndex = eqList.indexOf(chkd[i]); //Locate index of ds1
+      //  if (removalIndex >= 0) { //make sure this element exists in the array
+         //   eqList[removalIndex].remove()
+
+       // }     
+         
+
+   // }
 
     // Remove from the graph and anywhere else, any of the checked equations
 
@@ -122,8 +139,6 @@ function removeChecked() {
 
         }
         
-        
-
     }
     myLineChart.update();
     
@@ -147,7 +162,7 @@ function enterDataSet() {
     var datapoints = document.getElementById("noPoints").value;
     var func = document.getElementById("funcDef").value;
     var backgroundColor = dynamicColors();
-    var borderColor = dynamicColors();
+    var borderColor = backgroundColor;
 
     dataSet = addDataSet(datapoints, func, backgroundColor, borderColor);
 
