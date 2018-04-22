@@ -27,18 +27,22 @@
 					<ul id ="funcList"></ul>
 					
 				</div>
-				<div  class="col-sm-8" style="display: inline-block; left:150px">
+				<div  class="col-sm-12" style="display: inline-block; left:50px;">
 					<h1 style="">ROCr</h1>
 					<div class="jumbotron">
-						<canvas id="myChart" width="400" height="400"></canvas>
+						<canvas id="myChart" width="600" height="600"></canvas>
 					</div>
 				</div>
-				<div class="col-sm-12" style="position: fixed; display: inline-block; left:920px">
-					<p>Equations to try(just copy and paste them</p>
+				<div class="col-sm-12" style="position: fixed; display: inline-block; left:1030px">
+					<p style = "display: block; width: 200px">Equations to try(just copy and paste them</p>
 					<p> into the "Enter a function field): </p>
-					<p><input type="text" id="not for use" value="(12/11)(asin(x))^(1/4)"></p>
-					<p><input type="text" id="not for use" value="tanh(2x)"></p>
-					<p><input type="text" id="not for use" value="x^(1/2)"></p>  
+					<p><input type="text" id="funcA" value="(12/11)(asin(x))^(1/4)"></p>
+					<button onclick="andFuncs()" id="andButton">AND</button>
+					<button onclick="orFuncs()" id="orButton">OR</button>
+				</p>
+					<p><input type="text" id="funcB" value="tanh(2x)"></p>
+					 
+					<ul id ="comboList"></ul>
 				</div>
 			</div> 
 		</div>
