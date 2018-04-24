@@ -2,10 +2,9 @@
 {% endblock %} {% block cont %}
 
 <body>
-<<<<<<< HEAD
   <h1>ROCr</h1>
-  
-  <div style="position: fixed; top: 30px; left:10px; display: inline-block;">
+
+  <div style="position: fixed; left:10px; display: inline-block;">
     <p>Previous Equation:</p>
     <p id="test"></p>                              
     <p>Enter a function</p>
@@ -33,57 +32,6 @@
     <p><input type="text" id="not for use" value="x^(1/2)"></p>                              
   </div>
   
-=======
-    <div class="container-fluid">
-        <div class="row">
-			<div class="col-sm-12">
-				
-				<div style="position: fixed;
-                            top: 50px;
-                            left:10px;
-                            display: inline-block;">
-                                                              
-					<p>Enter a function</p>
-					<p><input type="text" id="funcDef" value=""></p>
-					<p>Enter integer # of data points</p> 
-					<p>Changing this number between</p> 
-					<p>adding functions does not work yet</p> 
-					<p>Give it a try</p>                             
-					<p><input type="number" id="noPoints" value=50></p>
-					<button onclick="enterDataSet()" id="enterDataSet">Plot Function</button>       
-					<p><button onclick="processChecked()" id="removeDataset">Process Checked(not defined)</button></p>                 
-					<p><button onclick="removeChecked()" id="removeDataset">Remove Checked</button></p>
-					<p id="demo">Equation(s):</p>
-					<p>Checking/unchecking/ removes/re-adds function</p>
-					<ul id ="funcList"></ul>
-					
-				</div>
-				<div  class="col-sm-12" style="display: inline-block; left:50px;">
-					<h1 style="">ROCr</h1>
-					<div class="jumbotron">
-						<canvas id="myChart" width="600" height="600"></canvas>
-					</div>
-				</div>
-				<div class="col-sm-12" style="position: fixed; display: inline-block; left:1030px">
-					<p style = "display: block; width: 200px">Equations to try(just copy and paste them</p>
-					<p> into the "Enter a function field): </p>
-					<p><input type="text" id="funcA" value="(12/11)(asin(x))^(1/4)"></p>
-					<button onclick="andFuncs()" id="andButton">AND</button>
-					<button onclick="orFuncs()" id="orButton">OR</button>
-				</p>
-					<p><input type="text" id="funcB" value="tanh(2x)"></p>
-					 
-					<ul id ="comboList"></ul>
-				</div>
-			</div> 
-		</div>
-	</div>
-   
-    <br>
-    <br>
-
-
->>>>>>> 0f79c3ca2cfa2bd3c9810f3a300d303f7c7ffab9
 </body>
 
 <hr>

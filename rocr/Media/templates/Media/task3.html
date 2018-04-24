@@ -1,14 +1,9 @@
 {% extends "page.html" %}
 {% load staticfiles %}
-
-{% block title %}Task 3{% endblock %}
-
-
+{% block title %}Task 2{% endblock %}
 {% block css %}
     {{block.super}}
 {% endblock %}
-
-
 {% block cont %}
 
 <body>
@@ -16,7 +11,6 @@
   <div class="jumbotron">
     <canvas id="myChart"></canvas>
   </div>
-<<<<<<< HEAD
 </body>
 
 <hr>
@@ -28,15 +22,3 @@
 {% endblock %}
 <script src="{% static 'js/task3.js' %}"></script>
 {% endblock cont %}
-=======
-          
-  <hr>
-  <footer>
-  </footer>
-  {% block js %}
-      {{block.super}}
-  {% endblock %}
-  <script src="{% static 'js/task3.js' %}"></script>
-  {% endblock cont %}
->>>>>>> 0f79c3ca2cfa2bd3c9810f3a300d303f7c7ffab9
-  
