@@ -11,33 +11,19 @@
 
 {% block cont %}
 
-
-<div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-12">
-  
-        
-  
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12">
-              <h2>Task 2</h2>
-              <canvas id="myChart"></canvas>
-            </div>
-          </div>
-        </div> <!-- /container -->
-  
-      </div>
-    </div>
+<body>
+  <h2>Task 2</h2>
+  <div class="jumbotron">
+    <canvas id="myChart"></canvas>
   </div>
+</body>
           
-  <hr>
-  <footer>
-    <p>&copy; 2017 Rocr, Inc.</p>
-  </footer>
-  {% block js %}
-      {{block.super}}
-  {% endblock %}
-  <script src="{% static 'js/task2.js' %}"></script>
-  {% endblock cont %}
-  
+<hr>
+<footer>
+  <p>&copy; 2017 Rocr, Inc.</p>
+</footer>
+{% block js %}
+    {{block.super}}
+{% endblock %}
+<script src="{% static 'js/task2.js' %}"></script>
+{% endblock cont %}
