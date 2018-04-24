@@ -5,60 +5,49 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12">
-
-
-
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h1>ROCr</h1>
-                            <div style="position: fixed;
-                            top: 30px;
+			<div class="col-sm-12">
+				
+				<div style="position: fixed;
+                            top: 50px;
                             left:10px;
                             display: inline-block;">
-                                <p>Previous Equation:</p>
-                                <p id="test"></p>                              
-                                <p>Enter a function</p>
-                                <p><input type="text" id="funcDef" value=""></p>
-                                <p>Enter integer # of data points</p> 
-                                <p>Changing this number between</p> 
-                                <p>adding functions does not work yet</p> 
-                                <p>Give it a try</p>                             
-                                <p><input type="number" id="noPoints" value=50></p>
-                                <button onclick="addDataSet()" id="addDataset">Plot Function</button>                        
-                                <p><button onclick="addRemoveButtons()" id="removeDataset">Remove Function</button></p>
-                                <p id="whichOne"></p>
-                                <p id="toRemove"></p>
-                            </div>
-                                
-                            
-                            <div style="display: inline-block">
-                                <div class="jumbotron">
-                                    <canvas id="myChart" width="600" height="600"></canvas>
-                                </div>
-                                
-                            </div>
-                            <div style="position: fixed;
-                            
-                            display: inline-block;">
-                            <p>Equations to try(just copy and paste them</p>
-                            <p> into the "Enter a function field): </p>
-                            <p><input type="text" id="not for use" value="(12/11)(asin(x))^(1/4)"></p>
-                            <p><input type="text" id="not for use" value="tanh(2x)"></p>
-                            <p><input type="text" id="not for use" value="x^(1/2)"></p>
-                            
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-                <!-- /container -->
-
-            </div>
-        </div>
-    </div>
+                                                              
+					<p>Enter a function</p>
+					<p><input type="text" id="funcDef" value=""></p>
+					<p>Enter integer # of data points</p> 
+					<p>Changing this number between</p> 
+					<p>adding functions does not work yet</p> 
+					<p>Give it a try</p>                             
+					<p><input type="number" id="noPoints" value=50></p>
+					<button onclick="enterDataSet()" id="enterDataSet">Plot Function</button>       
+					<p><button onclick="processChecked()" id="removeDataset">Process Checked(not defined)</button></p>                 
+					<p><button onclick="removeChecked()" id="removeDataset">Remove Checked</button></p>
+					<p id="demo">Equation(s):</p>
+					<p>Checking/unchecking/ removes/re-adds function</p>
+					<ul id ="funcList"></ul>
+					
+				</div>
+				<div  class="col-sm-12" style="display: inline-block; left:50px;">
+					<h1 style="">ROCr</h1>
+					<div class="jumbotron">
+						<canvas id="myChart" width="600" height="600"></canvas>
+					</div>
+				</div>
+				<div class="col-sm-12" style="position: fixed; display: inline-block; left:1030px">
+					<p style = "display: block; width: 200px">Equations to try(just copy and paste them</p>
+					<p> into the "Enter a function field): </p>
+					<p><input type="text" id="funcA" value="(12/11)(asin(x))^(1/4)"></p>
+					<button onclick="andFuncs()" id="andButton">AND</button>
+					<button onclick="orFuncs()" id="orButton">OR</button>
+				</p>
+					<p><input type="text" id="funcB" value="tanh(2x)"></p>
+					 
+					<ul id ="comboList"></ul>
+				</div>
+			</div> 
+		</div>
+	</div>
+   
     <br>
     <br>
 
