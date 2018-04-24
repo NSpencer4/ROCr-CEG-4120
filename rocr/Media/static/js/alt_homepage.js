@@ -92,32 +92,32 @@ function orFuncs() {
     addToEqList(orString, funcCheck, lEntry);
 }
 
-class Queue{
-    constructor(s){
+class Queue {
+    constructor(s) {
         this.front = -1;
         this.rear = -1;
         this.size = -1;
         this.buf = [s];
     }
-    enqueue(val){
-        if(front == -1){
+    enqueue(val) {
+        if (front == -1) {
             front = 0;
             rear = 0;
             buf[rear] = val;
         }
-        else if(rear == size-1 && front != 0){
+        else if (rear == size - 1 && front != 0) {
             rear = 0;
             buf[rear] = val;
         }
-        else{
+        else {
             rear++;
             buf[rear] = val;
         }
 
     }
-    deQueue(){
-        if(front == -1){
-            
+    deQueue() {
+        if (front == -1) {
+
         }
     }
 
@@ -125,15 +125,128 @@ class Queue{
 
 //Not Defined
 function processChecked() {
-  
 
-    
+    // list of checked elements
+    //Take in all the elements of the ul list, id "funcList"
+    var eqList = document.getElementById("funcList").getElementsByTagName("LI");
+    var chkd = [];
+    var eqChild = null;
+    var A = "";
+    var B = "";
+    var C = "";
 
-    
+
+
+    for (var i = 0; i < eqList.length; i++) {
+        eqChild = eqList[i].children[0];
+        if (eqChild.checked == true) {
+            chkd.push(eqChild.val);
+            funcList.removeChild(eqChild.parentElement);
+            i--;
+
+
+        }
+    }
+
+
+
+    // Remove from the graph and anywhere else, any of the checked equations
+
+    for (var i = 0; i < chkd.length; i++) {
+        let removalIndex = myLineChart.data.datasets.indexOf(chkd[i]); //Locate index of ds1
+        if (removalIndex >= 0) { //make sure this element exists in the array
+            myLineChart.data.datasets.splice(removalIndex, 1);
+
+        }
+
+    }
+    myLineChart.update();
+
+    A = chkd[0].label;
+    B = chkd[1].label;
+    C = chkd[2].label;
+
+    var eqAry = [];
+
+    var c1 = or(and(A, B), C);
+    var c2 = and(or(A, B), C);
+    var c3 = and(and(A, B), C);
+    var c4 = or(or(A, B), C);
+
+    var c5 = or(and(A, C), B);
+    var c6 = and(or(A, C), B);
+    var c7 = and(and(A, C), B);
+    var c8 = or(or(A, C), B);
+
+    var c9 = or(and(B, C), A);
+    var c10 = and(or(B, C), A);
+    var c11 = and(and(B, C), A);
+    var c12 = or(or(B, C), A);
+
+    eqAry.push(c1);
+    eqAry.push(c2);
+    eqAry.push(c3);
+    eqAry.push(c4);
+    eqAry.push(c5);
+    eqAry.push(c6);
+    eqAry.push(c7);
+    eqAry.push(c8);
+    eqAry.push(c9);
+    eqAry.push(c10);
+    eqAry.push(c11);
+    eqAry.push(c12);
+
+    var eqAry = [];
+    var sum = 0;
+    var greatest = 0;
+    var best = [];
+
+    for (var i = 0; i < 12; i++){
+        for(var j = 0; j < c1.length; j++){
+            sum+= eqAry[i][j];
+        }
+        sum = sum/c1.length;
+        if(sum > greatest){
+            best = eqAry[i].slice(0);
+        }
+                
+    }
+    var dataset = addDataSet(datapoints, andString, backgroundColor, borderColor);
+
+
 
 }
 
+function and(eq1, eq2){
 
+ 
+    var dataSet = [];
+    
+    var andString = "(" + eq1 + ")(" + eq2 + ")";
+
+    var datapoints = document.getElementById("noPoints").value;
+    var backgroundColor = dynamicColors();
+    var borderColor = backgroundColor;
+
+    //put dataset into chart
+    dataSet = addDataSet(datapoints, andString, backgroundColor, borderColor);
+    return dataset;
+
+}
+function or(eq1, eq2){
+    var dataSet = [];
+    
+    var orString = "(" + eq1 + ")(" + eq2 + ") + (" + eq1 + ") - (" + eq2 + ")";
+
+    var datapoints = document.getElementById("noPoints").value;
+    var backgroundColor = dynamicColors();
+    var borderColor = backgroundColor;
+
+    //put dataset into chart
+    dataSet = addDataSet(datapoints, andString, backgroundColor, borderColor);
+    return dataset;
+    
+}
 
 //Invoked when remove Checked button is pressed
 //Removes checked equations
