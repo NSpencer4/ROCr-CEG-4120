@@ -86,41 +86,83 @@ function orFuncs() {
 
 
 
-    //Set behavior of check list elements
-    
+
+
     //Add to list
     addToEqList(orString, funcCheck, lEntry);
 }
 
+class Queue{
+    constructor(s){
+        this.front = -1;
+        this.rear = -1;
+        this.size = -1;
+        this.buf = [s];
+    }
+    enqueue(val){
+        if(front == -1){
+            front = 0;
+            rear = 0;
+            buf[rear] = val;
+        }
+        else if(rear == size-1 && front != 0){
+            rear = 0;
+            buf[rear] = val;
+        }
+        else{
+            rear++;
+            buf[rear] = val;
+        }
 
+    }
+    deQueue(){
+        if(front == -1){
+            
+        }
+    }
+
+}
 
 //Not Defined
 function processChecked() {
     //all of the equations entered
-    var eqList = [];
-    //only the equations
-    var checkedList = [];
+    var eqList = document.getElementById("funcList").getElementsByTagName("LI");
+    var eqSet = [];
+    var allPoss = [];    
+    var listSize = eqList.length;
+    var eqChild = null;
+    var setSize = 0;
+    var setMatrix = [][];
+    var visited
 
-    eqList.forEach(function (eq) {
-        if (eq.isChecked()) {
-            checkedList.push(eq)
+    for (var i = 0; i < listSize; i++) {
+        eqChild = eqList[i].children[0];
+        if (eqChild.checked == true) {
+            eqSet.push(eqChild.val);            
+            setSize++;
         }
-    });
-    //Given a specific interval
-    //Do all possible AND/Or combos on checked equations and plot
-    // the equation of the best curve
+    }
 
-    process(checkedList);
+    for(var i = 0; i < setSize; i++){
+        for(var j = 0; j < setSize; j++){
+            if(i!=j){
+                setMatrix[i][j] = 1;
+            }
+
+        }
+    }
+
+    for(var i = 0; i < setSize; i++){
+        nBest.push(bestOf(eqSet[i]));
+   
+    }
+
+    
+
+    
 
 }
-//Not defined
-function process(cL) {
 
-
-    var bestCurve = "";
-
-    return bestCurve;
-}
 
 
 //Invoked when remove Checked button is pressed
@@ -130,16 +172,13 @@ function removeChecked() {
     // list of checked elements
 
     //Take in all the elements of the ul list, id "funcList"
-    var UList = document.getElementById("funcList");
     var eqList = document.getElementById("funcList").getElementsByTagName("LI");
-    var cmbList = document.getElementById("comboList");
-    var ceqList = document.getElementById("comboList").getElementsByTagName("LI");
     var chkd = [];
-
+    var eqChild = null;
 
 
     for (var i = 0; i < eqList.length; i++) {
-        var eqChild = eqList[i].children[0];
+        eqChild = eqList[i].children[0];
         if (eqChild.checked == true) {
             chkd.push(eqChild.val);
             funcList.removeChild(eqChild.parentElement);
@@ -148,16 +187,7 @@ function removeChecked() {
 
         }
     }
-    for (var i = 0; i < ceqList.length; i++) {
-        var ceqChild = ceqList[i].children[0];
-        if (ceqChild.checked == true) {
-            chkd.push(ceqChild.val);
-            funcList.removeChild(ceqChild.parentElement);
-            i--;
 
-
-        }
-    }
 
 
     // Remove from the graph and anywhere else, any of the checked equations
@@ -173,14 +203,11 @@ function removeChecked() {
     myLineChart.update();
 
 }
-///So you can hit 'ENTER' to enter equation
-var input = document.getElementById("funcDef");
-input.addEventListener("keyup", function (event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        document.getElementById("enterDataSet").click();
-    }
-});
+
+hitEnter("funcDef", "enterDataSet");
+
+
+
 ///////////////////////////////////////////////////////////////
 // Just Entering single stringed equations to become data
 function enterDataSet() {
@@ -203,7 +230,7 @@ function enterDataSet() {
 
 
     //Set behavior of check list elements
-    
+
 
     //Add to list
     addToEqList(funcName, funcCheck, lEntry);
@@ -287,32 +314,19 @@ function mkFcnEntry(eqStr, ds) {
     fcnCk.checked = true;
     fcnCk.id = eqStr;
     fcnCk.val = ds;
-    
+
     return fcnCk;
 }
 
 function mkLEntry() {
 
     var lEnt = document.createElement("LI");
-    
+
 
     return lEnt;
 }
 
-class setCkFcnBehavior {
-    constructor(dp, funcCheck, bkgC, bdrC) {
-        if (funcCheck.checked == false) {
-            let removalIndex = myLineChart.data.datasets.indexOf(funcCheck.val); //Locate index of ds1
-            if (removalIndex >= 0) { //make sure this element exists in the array
-                myLineChart.data.datasets.splice(removalIndex, 1);
-            }
-            myLineChart.update();
-        }
-        else {
-            funcCheck.val = addDataSet(dp, funcCheck.id, bkgC, bdrC);
-        }
-    }
-}
+
 function addToEqList(eqStr, fcnCk, lEntry) {
     var eqnField = document.createElement("input");
     eqnField.value = eqStr;
@@ -322,6 +336,17 @@ function addToEqList(eqStr, fcnCk, lEntry) {
     lEntry.appendChild(fcnCk);
     lEntry.appendChild(eqnField);
     document.getElementById("funcList").appendChild(lEntry);
+}
+
+///So you can hit 'ENTER' to enter equation
+function hitEnter(inputId, btnId) {
+    var input = document.getElementById(inputId);
+    input.addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById(btnId).click();
+        }
+    });
 }
 // Configuration options go here
 
