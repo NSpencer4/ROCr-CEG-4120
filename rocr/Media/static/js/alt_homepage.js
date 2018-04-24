@@ -125,37 +125,7 @@ class Queue{
 
 //Not Defined
 function processChecked() {
-    //all of the equations entered
-    var eqList = document.getElementById("funcList").getElementsByTagName("LI");
-    var eqSet = [];
-    var allPoss = [];    
-    var listSize = eqList.length;
-    var eqChild = null;
-    var setSize = 0;
-    var setMatrix = [][];
-    var visited
-
-    for (var i = 0; i < listSize; i++) {
-        eqChild = eqList[i].children[0];
-        if (eqChild.checked == true) {
-            eqSet.push(eqChild.val);            
-            setSize++;
-        }
-    }
-
-    for(var i = 0; i < setSize; i++){
-        for(var j = 0; j < setSize; j++){
-            if(i!=j){
-                setMatrix[i][j] = 1;
-            }
-
-        }
-    }
-
-    for(var i = 0; i < setSize; i++){
-        nBest.push(bestOf(eqSet[i]));
-   
-    }
+  
 
     
 
