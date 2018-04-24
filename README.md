@@ -81,6 +81,11 @@ Gather install the node_modules
 Cd into /rocr/Media/static
 npm install
 
+npm install chart.js --save
+
+npm install mathjs --save    (notice no '.' between the 'math' and 'js')
+
+
 Setup the DB
 Python manage.py makemigrations
 Python manage.py migrate
