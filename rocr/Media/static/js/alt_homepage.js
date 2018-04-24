@@ -33,6 +33,7 @@ var data = {
 };
 
 
+
 var dynamicColors = function () {
     var r = Math.floor(Math.random() * 255);
     var g = Math.floor(Math.random() * 255);
@@ -52,40 +53,18 @@ function andFuncs() {
     var backgroundColor = dynamicColors();
     var borderColor = backgroundColor;
 
+    //put dataset into chart
     dataSet = addDataSet(datapoints, andString, backgroundColor, borderColor);
 
-
-
-
     //Also creating a checkbox entry with the equation
-    var lEntry = document.createElement("LI");
-    lEntry.style.left = "1030px";
-    var funcCheck = document.createElement("INPUT");
-    funcCheck.setAttribute("type", "checkbox");
-    funcCheck.checked = true;
-    funcCheck.id = andString;
-    funcCheck.val = dataSet;
+    var funcCheck = mkFcnEntry(andString, dataSet);
+    var lEntry = mkLEntry();
 
-    //Set behavior of check list elements
-    funcCheck.onchange = function () {
-        if (funcCheck.checked == false) {
-            let removalIndex = myLineChart.data.datasets.indexOf(funcCheck.val); //Locate index of ds1
-            if (removalIndex >= 0) { //make sure this element exists in the array
-                myLineChart.data.datasets.splice(removalIndex, 1);
-            }
-            myLineChart.update();
-        }
-        else {
-            funcCheck.val = addDataSet(datapoints, funcCheck.id, backgroundColor, borderColor);
-        }
-    }
-    lEntry.innerHTML = andString;
-    lEntry.style.display = "block";
-    lEntry.style.width = "400px";
-    lEntry.appendChild(funcCheck);
-    document.getElementById("funcList").appendChild(lEntry);
 
+    //Add to list
+    addToEqList(andString, funcCheck, lEntry);
 }
+
 //Invoked when the or button is pressed
 function orFuncs() {
     //Getting the equation string, parsing and making a set
@@ -101,38 +80,16 @@ function orFuncs() {
 
     dataSet = addDataSet(datapoints, orString, backgroundColor, borderColor);
 
-
-
-
     //Also creating a checkbox entry with the equation
-    var lEntry = document.createElement("LI");
-    lEntry.style.left = "1030px";
-    var funcCheck = document.createElement("INPUT");
-    funcCheck.setAttribute("type", "checkbox");
-    funcCheck.checked = true;
-    funcCheck.id = orString;
-    funcCheck.val = dataSet;
+    var funcCheck = mkFcnEntry(orString, dataSet);
+    var lEntry = mkLEntry();
+
+
 
     //Set behavior of check list elements
-    funcCheck.onchange = function () {
-        if (funcCheck.checked == false) {
-            let removalIndex = myLineChart.data.datasets.indexOf(funcCheck.val); //Locate index of ds1
-            if (removalIndex >= 0) { //make sure this element exists in the array
-                myLineChart.data.datasets.splice(removalIndex, 1);
-            }
-            myLineChart.update();
-        }
-        else {
-            funcCheck.val = addDataSet(datapoints, funcCheck.id, backgroundColor, borderColor);
-        }
-    }
-    lEntry.innerHTML = orString;
-    lEntry.style.display = "block";
-    lEntry.style.width = "400px";
-
-    lEntry.appendChild(funcCheck);
-    document.getElementById("funcList").appendChild(lEntry);
-
+    
+    //Add to list
+    addToEqList(orString, funcCheck, lEntry);
 }
 
 
@@ -231,44 +188,25 @@ function enterDataSet() {
     //Getting the equation string, parsing and making a set
     //Also creating a checkbox entry with the equation
     var dataSet = [];
-    var funcName = document.getElementById("funcDef").value;
+    var funcName = document.getElementById("funcDef").value;// remove
     var datapoints = document.getElementById("noPoints").value;
     var func = document.getElementById("funcDef").value;
     var backgroundColor = dynamicColors();
     var borderColor = backgroundColor;
 
-    dataSet = addDataSet(datapoints, func, backgroundColor, borderColor);
-
-
-
+    dataSet = addDataSet(datapoints, funcName, backgroundColor, borderColor);
 
     //Also creating a checkbox entry with the equation
-    var lEntry = document.createElement("LI");
-    var funcCheck = document.createElement("INPUT");
-    funcCheck.setAttribute("type", "checkbox");
-    funcCheck.checked = true;
-    funcCheck.id = func;
-    funcCheck.val = dataSet;
+    var funcCheck = mkFcnEntry(funcName, dataSet);
+    var lEntry = mkLEntry();
+
+
 
     //Set behavior of check list elements
-    funcCheck.onchange = function () {
-        if (funcCheck.checked == false) {
-            let removalIndex = myLineChart.data.datasets.indexOf(funcCheck.val); //Locate index of ds1
-            if (removalIndex >= 0) { //make sure this element exists in the array
-                myLineChart.data.datasets.splice(removalIndex, 1);
-            }
-            myLineChart.update();
-        }
-        else {
-            funcCheck.val = addDataSet(datapoints, funcCheck.id, backgroundColor, borderColor);
-        }
-    }
-    lEntry.innerHTML = funcName;
-    lEntry.appendChild(funcCheck);
-    document.getElementById("funcList").appendChild(lEntry);
+    
 
-
-
+    //Add to list
+    addToEqList(funcName, funcCheck, lEntry);
 
 }
 // Supplying the details for and adding a new data set
@@ -276,7 +214,6 @@ function addDataSet(datapoints, func, bckC, bordC) {
 
     var f = math.parse(func);
     var simplified = math.simplify(f);
-
     var xList = [];
 
     //Make x values
@@ -294,7 +231,6 @@ function addDataSet(datapoints, func, bckC, bordC) {
     }
 
     ///Get the function values using the parsed equation
-
     var fX = 0;
     var fXList = [];
     for (var i = 0; i < datapoints; i++) {
@@ -344,7 +280,49 @@ function removeExtraData(dp, s, xL) {
     myLineChart.update();
 }
 
+function mkFcnEntry(eqStr, ds) {
 
+    var fcnCk = document.createElement("INPUT");
+    fcnCk.setAttribute("type", "checkbox");
+    fcnCk.checked = true;
+    fcnCk.id = eqStr;
+    fcnCk.val = ds;
+    
+    return fcnCk;
+}
+
+function mkLEntry() {
+
+    var lEnt = document.createElement("LI");
+    
+
+    return lEnt;
+}
+
+class setCkFcnBehavior {
+    constructor(dp, funcCheck, bkgC, bdrC) {
+        if (funcCheck.checked == false) {
+            let removalIndex = myLineChart.data.datasets.indexOf(funcCheck.val); //Locate index of ds1
+            if (removalIndex >= 0) { //make sure this element exists in the array
+                myLineChart.data.datasets.splice(removalIndex, 1);
+            }
+            myLineChart.update();
+        }
+        else {
+            funcCheck.val = addDataSet(dp, funcCheck.id, bkgC, bdrC);
+        }
+    }
+}
+function addToEqList(eqStr, fcnCk, lEntry) {
+    var eqnField = document.createElement("input");
+    eqnField.value = eqStr;
+    //lEntry.innerHTML = eqStr;
+    lEntry.style.display = "block";
+    lEntry.style.width = "400px";
+    lEntry.appendChild(fcnCk);
+    lEntry.appendChild(eqnField);
+    document.getElementById("funcList").appendChild(lEntry);
+}
 // Configuration options go here
 
 var options = {
